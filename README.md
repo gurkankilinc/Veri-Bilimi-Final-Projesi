@@ -1,15 +1,15 @@
-# İstanbul Toplu Ulaşım (İETT) Saatlik Yolcu Analizi
+# İstanbul Toplu Ulaşım (İETT) Yolcu Analizi
 
-Veri Bilimi dersi dönem projesi. İBB Açık Veri Portalı'ndaki **Saatlik Toplu Ulaşım Veri Seti** üzerinde
+Veri Bilimi dersi dönem projesi. İBB Açık Veri Portalı'ndaki **Toplu Ulaşım Veri Seti** üzerinde
 uçtan uca bir veri bilimi iş akışı uygulanır: veri toplama → temizleme → keşifsel veri analizi (EDA) →
 görselleştirme → basit modelleme → yorumlama.
 
 ## Proje Ekibi
 
 | Öğrenci No | Ad Soyad |
-|------------|----------|
-| `________` | `________` |
-| `________` | `________` |  <!-- bireysel ise bu satırı silin -->
+| 1306240134 | Gürkan Kılınç |
+
+Bu proje **bireysel** olarak hazırlanmıştır.
 
 ## Araştırma Soruları
 
@@ -44,7 +44,7 @@ iett-veri-bilimi-projesi/
 ├── prompts/
 │   └── prompt_gunlugu.md       # Geliştirmede kullanılan önemli promptlar (kronolojik)
 ├── report/
-│   └── RAPOR_TASLAGI.md        # Kısa raporun taslağı (PDF'e dönüştürülecek)
+│   └── rapor.pdf               # Kısa rapor (3-5 sayfa, bulgularla)
 └── figures/                    # Notebook'tan dışa aktarılan grafikler
 ```
 
@@ -52,8 +52,8 @@ iett-veri-bilimi-projesi/
 
 1. Depoyu klonlayın ve sanal ortam kurun:
    ```bash
-   git clone <REPO_LINKINIZ>
-   cd iett-veri-bilimi-projesi
+   git clone https://github.com/gurkankilinc/Veri-Bilimi-Final-Projesi.git
+   cd Veri-Bilimi-Final-Projesi
    python -m venv .venv
    source .venv/bin/activate      # Windows: .venv\Scripts\activate
    pip install -r requirements.txt
