@@ -87,3 +87,21 @@ yaz aylarındaki düşüş ve hat bazlı yoğunluk. Her birini sonuçların anla
 
 **16.** Projenin "Sınırlamalar" bölümü için 3-4 madde öner.
 *Not: Dar kapsam, dış değişkenlerin eksikliği gibi sınırlamalar listelendi.*
+
+## Faz 3+ — Ek zenginleştirme analizleri
+
+**17.** Veri setindeki `town` (ilçe) sütununu kullanarak en çok yolcu üreten ilçeleri
+yatay bar grafikle göster; eksik ilçeleri çıkar.
+*Not: Mekânsal boyut eklendi — talep merkez ilçelerde yoğunlaşıyor.*
+
+**18.** `transaction_type_desc` sütununa göre ücret tiplerinin (Tam/İndirimli/Ücretsiz/
+Abonman) toplam yolcudaki payını çıkar ve görselleştir.
+*Not: Yolcu profilinin sosyo-ekonomik dağılımı incelendi.*
+
+**19.** Otobüs hatlarını saatlik talep profillerinin şekline göre KMeans ile kümele;
+her hattı kendi tepe değerine normalize et ve küme merkezlerini saatlik profil olarak çiz.
+*Not: İkinci model tekniği — işe-gidiş hatları ile gün-içi hatları ayrıştırdı.*
+
+**20.** Isı haritası rengini "düşük=yeşil, yüksek=kırmızı" mantığına çevir; histogramı
+aşırı çarpık dağılım için log ölçeğe al.
+*Not: Görsel okunabilirlik ve sezgisellik artırıldı.*
