@@ -77,4 +77,4 @@ pandas, numpy, matplotlib, seaborn, scikit-learn, requests, jupyter
 
 Proje "vibe coding" yöntemiyle, bir yapay zekâ kodlama asistanı birincil geliştirme ortağı olarak
 kullanılarak geliştirilmiştir. Kullanılan başlıca promptlar `prompts/prompt_gunlugu.md` içinde
-kronolojik olarak listelenmiştir. Üretilen tüm kod ekip tarafından anlaşılmış ve doğrulanmıştır.
+kronolojik olarak listelenmiştir.
