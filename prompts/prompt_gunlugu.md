@@ -105,3 +105,49 @@ her hattı kendi tepe değerine normalize et ve küme merkezlerini saatlik profi
 **20.** Isı haritası rengini "düşük=yeşil, yüksek=kırmızı" mantığına çevir; histogramı
 aşırı çarpık dağılım için log ölçeğe al.
 *Not: Görsel okunabilirlik ve sezgisellik artırıldı.*
+
+## Faz 6 — Veri Kalitesi ve Sistem Doğrulama
+
+**21.** `town` sütununda veri sızıntısı var: Anadolu yakası hatları (11–19 prefix), Metrobüs
+(34) ve ekspres serisi (500, 522) GPS okunamadığında otomatik `BAKIRKOY` atıyor ve ilçe
+grafiğini şişiriyor. Bu satırları silmeden `town = NaN` yapan bir temizlik bloğu ekle,
+örneklemi de %10'dan %20'ye çıkar.
+*Not: Prefix tabanlı ilk temizlik bloğu eklendi; Bakırköy baskınlığı azaldı fakat
+tamamen giderilmedi — sınır prefix listesi çok dardı.*
+
+**22.** Temizlik sonrası bile Bakırköy 29 milyon yolcuyla açık ara birinci çıkıyor. 29
+milyon gerçekçi değil. Başka ilçelerin veya NaN değerlerin Bakırköy'e kayması mı var?
+Neden diğer ilçelerin sayısı bu kadar düşük?
+*Not: 405 farklı hat Bakırköy etiketli görünüyordu; top 3 hattın payı yalnızca %5.4 —
+bu, büyük ölçekli varsayılan atama örüntüsünün klasik imzasıdır.*
+
+**23.** Her hat kodu için BAKIRKOY kayıt oranını hesapla; oran %90'ı geçiyorsa o hattın
+tüm kayıtlarında `town = NaN` yap. Gerçek bir Bakırköy hattı diğer ilçelerde de kayıt
+üretir, hiçbir hattın %100'ü BAKIRKOY olamaz.
+*Not: Veri güdümlü temizlik uygulandı; 203 hat NaN'a çekildi, BAKIRKOY'un tüm
+kayıtlardaki payı %11.7'ye geriledi, ilçe grafiği artık makul bir dağılım gösteriyor.*
+
+## Faz 7 — Profesyonelleştirme ve Raporlama
+
+**24.** Tüm "Bulgu" hücrelerini güncel verilere göre yenile. Sonuçlar/Öğrenilenler
+bölümünü daha kapsamlı ve akademik bir dille yaz; veri kalitesi sorununu çok ön plana
+çıkarmadan ama dürüstçe belirt. Grafik başlıklarından "BAKIRKOY sızıntısı temizlenmiş"
+ifadesini kaldır. rapor.pdf ve README'yi de doğru bulguları yansıtacak biçimde güncelle.
+*Not: Section 7 komple yeniden yazıldı — 5 araştırma sorusu özeti, model karşılaştırma
+tablosu (gerçek sayılarla), 4 sınırlama maddesi ve vibe coding öz-değerlendirme eklendi.
+rapor.pdf yeniden üretildi (Arial TTF, 113 KB, Türkçe karakterler doğru).*
+
+**25.** Grafiklerdeki yolcu sayıları gerçekten 8 milyona sınırlandırılmış örneklemi mi
+kullanıyor, yoksa 41 milyonluk tam veriyi mi kapsıyor? Eğer 8 milyona sınırlıysa
+%20 ifadesine gerek yok, kaldıralım ve verinin %100'ünü kullanalım.
+*Not: Tüm grafikler `otobus` DataFrame üzerinden çalıştığı için örneklemeye tabiydi;
+sampling kaldırılıp 41 M kayıtla tam veri kullanımına geçildi, başlık etiketleri temizlendi.*
+
+## Faz 8 — Örneklem Optimizasyonu ve Keşif
+
+**26.** `town = BAKIRKOY` olan kayıtlarda `number_of_passenger` toplamı en yüksek 20 hattı
+sıralı listele. Sonra veriyi tekrar kısıtlayalım: %25 örneklem uygula ve bunu tüm
+grafiklere yansıt.
+*Not: Top 20 Bakırköy hattı listelendi — 97 (2.8 M), 10 (2.6 M), 418 (1.7 M) başı
+çekiyor; bunlar temizlik sonrası gerçek yerel Bakırköy hatları. `frac=0.25` ile
+~10.3 M kayıt örneklemi kuruldu, tüm EDA ve model hücreleri otomatik bu veri üzerinden çalışıyor.*
